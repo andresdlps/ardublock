@@ -1,7 +1,7 @@
 ArduBlock - SM
 ======
 
-Fork of ArduBlock project
+This is a fork of ArduBlock project
 
 License
 ----
