@@ -124,7 +124,7 @@ public class Context
 		workspaceController.setLangDefDtd(this.getClass().getResourceAsStream(LANG_DTD_PATH));
 		workspaceController.setLangDefStream(this.getClass().getResourceAsStream(ARDUBLOCK_LANG_PATH));
 		workspaceController.loadFreshWorkspace();
-		
+                
 		loadDefaultArdublockProgram();
 		
 		saveFilePath = null;
