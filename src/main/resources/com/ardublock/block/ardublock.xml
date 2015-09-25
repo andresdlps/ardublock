@@ -8766,31 +8766,101 @@
 		</BlockGenus>
                 
 <!--******************************BLOQUES QUEMES**************************************-->
-                <BlockGenus name="avanzar" kind="command" color="100 80 50" initlabel="bg.avanzar">
+                <BlockGenus name="avanzar" kind="command" color="10 80 50" initlabel="bg.avanzar">
 			<description>
 				<text>Avanza el robot Quemes hasta el siguiente cruce</text>
 			</description>
 		</BlockGenus>
-                <BlockGenus name="calibrar" kind="command" color="100 80 50" initlabel="bg.calibrar">
+                <BlockGenus name="calibrar" kind="command" color="10 80 50" initlabel="bg.calibrar">
 			<description>
 				<text>Calibra el robot Quemes</text>
 			</description>
 		</BlockGenus>
-                <BlockGenus name="parar" kind="command" color="100 80 50" initlabel="bg.parar">
+                <BlockGenus name="parar" kind="command" color="10 80 50" initlabel="bg.parar">
 			<description>
 				<text>Para la ejecucion del robot Quemes</text>
 			</description>
 		</BlockGenus>
-                <BlockGenus name="girarderecha" kind="command" color="100 80 50" initlabel="bg.girarderecha">
+                <BlockGenus name="girarderecha" kind="command" color="10 80 50" initlabel="bg.girarderecha">
 			<description>
 				<text>Gira 90 grados a la derecha</text>
 			</description>
 		</BlockGenus>
-                <BlockGenus name="girarizquierda" kind="command" color="100 80 50" initlabel="bg.girarizquierda">
+                <BlockGenus name="girarizquierda" kind="command" color="10 80 50" initlabel="bg.girarizquierda">
 			<description>
 				<text>Gira 90 grados a la izquierda</text>
 			</description>
 		</BlockGenus>
+                <BlockGenus name="defineSixIRSensorArray" kind="command" color="10 80 50" initlabel="bg.defineSixIRSensorArray">
+			<description>
+				<text>Definition of six Infrarred array </text>
+			</description>
+                        <BlockConnectors>
+                                <BlockConnector connector-type="string" connector-kind="socket" label="name">
+                                    <DefaultArg genus-name="message" label="variable_name" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Emmiter pin">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #1">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #2">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #3">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #4">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #5">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #6">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+                <BlockGenus name="defineTwoIRSensorArray" kind="command" color="10 80 50" initlabel="bg.defineTwoIRSensorArray">
+			<description>
+				<text>Definition of six Infrarred array </text>
+			</description>
+                        <BlockConnectors>
+                                <BlockConnector connector-type="string" connector-kind="socket" label="name">
+                                    <DefaultArg genus-name="message" label="variable_name" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #1">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="Pin #2">
+                                    <DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+                <BlockGenus name="IRSensorInLine" kind="data" color="10 80 50" initlabel="bg.IRSensorInLine">
+                         <BlockConnectors>
+                                <BlockConnector connector-type="string" connector-kind="socket" label="sensor_name">
+                                    <DefaultArg genus-name="message" label="variable_name" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+                </BlockGenus>
+                <BlockGenus name="IRSensorCalibration" kind="command" color="10 80 50" initlabel="bg.IRSensorCalibration">
+                         <BlockConnectors>
+                                <BlockConnector connector-type="string" connector-kind="socket" label="sensor_name">
+                                    <DefaultArg genus-name="message" label="variable_name" />
+                                </BlockConnector>
+			</BlockConnectors>
+                </BlockGenus>
+                <BlockGenus name="ReadArraySensor" kind="data" color="10 80 50" initlabel="bg.ReadArraySensor">
+                         <BlockConnectors>
+                                <BlockConnector connector-type="string" connector-kind="socket" label="sensor_name">
+                                    <DefaultArg genus-name="message" label="variable_name" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+                </BlockGenus>
 	</BlockGenuses>
 
 	<BlockFamilies>
@@ -9177,12 +9247,17 @@
 				<BlockGenusMember>subroutine</BlockGenusMember>
 				<BlockGenusMember>subroutine-ref</BlockGenusMember>
 			</BlockDrawer>
-                        <BlockDrawer name="bd.quemes" type="factory" button-color="100 80 50">
+                        <BlockDrawer name="bd.quemes" type="factory" button-color="10 80 50">
                                 <BlockGenusMember>avanzar</BlockGenusMember>
                                 <BlockGenusMember>calibrar</BlockGenusMember>
                                 <BlockGenusMember>parar</BlockGenusMember>
                                 <BlockGenusMember>girarderecha</BlockGenusMember>
                                 <BlockGenusMember>girarizquierda</BlockGenusMember>
+                                <BlockGenusMember>defineSixIRSensorArray</BlockGenusMember>
+                                <BlockGenusMember>IRSensorInLine</BlockGenusMember>
+                                <BlockGenusMember>IRSensorCalibration</BlockGenusMember>
+                                <BlockGenusMember>ReadArraySensor</BlockGenusMember>
+                                <BlockGenusMember>defineTwoIRSensorArray</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="29 152 155" name="bd.pins" type="factory">
 				<BlockGenusMember>pin-read-digital</BlockGenusMember>
@@ -9263,7 +9338,7 @@
 				<BlockGenusMember>setter_variable_char</BlockGenusMember>
 				<BlockGenusMember>variable_poly</BlockGenusMember>
 			</BlockDrawer>
-<!--			<BlockDrawer button-color="205 133 63" name="bd.utilities" type="factory">
+			<BlockDrawer button-color="205 133 63" name="bd.utilities" type="factory">
 				<BlockGenusMember>servo_default</BlockGenusMember>
 				<BlockGenusMember>ultrasonic</BlockGenusMember>
 				<BlockGenusMember>LCD_I2C_Sainsmart_20by4</BlockGenusMember>
@@ -9300,7 +9375,7 @@
 				<BlockGenusMember>scoop_event_falling</BlockGenusMember>
 				<BlockGenusMember>scoop_event_rising</BlockGenusMember>
 				<BlockGenusMember>scoop_event_change</BlockGenusMember>
-			</BlockDrawer>
+			</BlockDrawer><!--
 			<BlockDrawer button-color="0 50 45" name="bd.storage" type="factory">
 				<BlockGenusMember>eeprom_read_int</BlockGenusMember>
 				<BlockGenusMember>eeprom_write_int</BlockGenusMember>
@@ -9313,7 +9388,7 @@
 				 <BlockGenusMember>sd_write_number</BlockGenusMember> 
 				 <BlockGenusMember>sd_write_number_int</BlockGenusMember> 
 			</BlockDrawer>
-			<BlockDrawer button-color="169 148 212" name="bd.network" type="factory">
+-->			<BlockDrawer button-color="169 148 212" name="bd.network" type="factory">
 				<BlockGenusMember>bleshield</BlockGenusMember>
 				<BlockGenusMember>bleshield_available</BlockGenusMember>
 				<BlockGenusMember>bleshield_read_poly</BlockGenusMember>
@@ -9323,8 +9398,8 @@
 				<BlockGenusMember>code_head</BlockGenusMember>
 				<BlockGenusMember>code_setup</BlockGenusMember>
 				<BlockGenusMember>code_loop</BlockGenusMember>
-			</BlockDrawer>
-			<BlockDrawer button-color="13 152 164" name="bd.tinkerkit" type="factory">
+			</BlockDrawer><!--
+-->			<BlockDrawer button-color="13 152 164" name="bd.tinkerkit" type="factory">
 				<BlockGenusMember>Tinker_LED</BlockGenusMember>
 				<BlockGenusMember>Tinker_LED_pwm</BlockGenusMember>
 				<BlockGenusMember>Tinker_Button</BlockGenusMember>
@@ -9516,8 +9591,8 @@
 				<BlockGenusMember>me_port_1</BlockGenusMember>
 				<BlockGenusMember>me_motor_1</BlockGenusMember>
 				<BlockGenusMember>me_shutter_1</BlockGenusMember>
-			</BlockDrawer>-->
-			<!-- 
+			</BlockDrawer>
+			 
 			<BlockDrawer button-color="225 116 116" name="bd.workshop" type="factory">
 			    <BlockGenusMember>ws_setting</BlockGenusMember>
 			    <BlockGenusMember>ws_go_forward</BlockGenusMember>
@@ -9536,17 +9611,17 @@
 				<BlockGenusMember>ws_danger</BlockGenusMember>
 				<BlockGenusMember>ws_binoculars</BlockGenusMember>
 			</BlockDrawer>
-			 -->
-<!--			<BlockDrawer button-color="64 109 0" name="bd.insectbot">
+			 
+			<BlockDrawer button-color="64 109 0" name="bd.insectbot">
 			    <BlockGenusMember>insectbot_get_distance</BlockGenusMember>
 			    <BlockGenusMember>insectbot_is_indanger</BlockGenusMember>
 			    <BlockGenusMember>insectbot_go_forward</BlockGenusMember>
 			    <BlockGenusMember>insectbot_go_backright</BlockGenusMember>
 			    <BlockGenusMember>insectbot_turn_left</BlockGenusMember>
 			    <BlockGenusMember>insectbot_blink_led</BlockGenusMember>
-			</BlockDrawer>-->
+			</BlockDrawer>
 			<!-- iDrawing -->
-<!--			<BlockDrawer button-color="255 102 0" name="bd.iDrawing">
+			<BlockDrawer button-color="255 102 0" name="bd.iDrawing">
 			    <BlockGenusMember>iDrawing_set_para</BlockGenusMember>
 			    <BlockGenusMember>iDrawing_run</BlockGenusMember>
 			    <BlockGenusMember>iDrawing_rule_start</BlockGenusMember>
@@ -9574,7 +9649,7 @@
 			    <BlockGenusMember>trigger_greater</BlockGenusMember>
 			    <BlockGenusMember>trigger_less</BlockGenusMember>		    
 			</BlockDrawer>
-			 littlebits 
+<!--			 littlebits -->
 			<BlockDrawer button-color="93 13 125" name="bd.littlebits">
 			    <BlockGenusMember>little_bits_bendsensor</BlockGenusMember>
 			    <BlockGenusMember>little_bits_button</BlockGenusMember>
@@ -9608,10 +9683,10 @@
 			    <BlockGenusMember>little_bits_uvled</BlockGenusMember>
 			    <BlockGenusMember>little_bits_vibration_motor</BlockGenusMember>
 			    <BlockGenusMember>little_bits_synthspeaker</BlockGenusMember>
-			</BlockDrawer>
+			</BlockDrawer><!--
 			
 			 keenlon 			
-			<BlockDrawer button-color="20 150 30" name="bd.ke-keenlon">
+-->			<BlockDrawer button-color="20 150 30" name="bd.ke-keenlon">
 				<BlockGenusMember>ke-motor-run</BlockGenusMember>
 				<BlockGenusMember>ke-motor-setmoto</BlockGenusMember>	
 				<BlockGenusMember>ke-motor-stop</BlockGenusMember>				
@@ -9638,13 +9713,13 @@
 				<BlockGenusMember>ke-tempe</BlockGenusMember>	
 				<BlockGenusMember>ke-psd</BlockGenusMember>								
 				<BlockGenusMember>ke-servo</BlockGenusMember>																		
-			</BlockDrawer> 	
+			</BlockDrawer> 	<!--
 
 			<BlockDrawer button-color="152 29 155" name="bd.jerusalab" type="factory">
 				<BlockGenusMember>midi_command</BlockGenusMember>
 				 <BlockGenusMember>midi_note</BlockGenusMember> 
 			</BlockDrawer>-->
-			<!--
+			
 			<BlockDrawer button-color="135 206 235" name="bd.linksprite_LinkerKit">
 				<BlockGenusMember>ls_10mmLEDModule</BlockGenusMember>
 				<BlockGenusMember>ls_5mmLEDModule</BlockGenusMember>
@@ -9670,7 +9745,7 @@
 				<BlockGenusMember>ls_TiltModule</BlockGenusMember>
 				<BlockGenusMember>ls_TouchSensorModule</BlockGenusMember>
 			</BlockDrawer>
-			-->
+			
 			<!--
 			<BlockDrawer button-color="0 255 0" name="XinChejian" type="factory">
 				<BlockGenusMember>xcj_motor_forward</BlockGenusMember>
