@@ -19,12 +19,42 @@ public class AvanzarBlock extends TranslatorBlock{
     
     @Override
     public String toCode() throws SocketNullException, SubroutineNotDeclaredException, BlockException {
-        return "do { \n" +
-            "          sigueLinea();\n" +
-            "    } while(sobreCruce()) ; \n" +
+        String left = this.getRequiredTranslatorBlockAtSocket(0).toCode().replaceAll("\"", "");
+        String right = this.getRequiredTranslatorBlockAtSocket(1).toCode().replaceAll("\"", "");
+        String frontSensors = this.getRequiredTranslatorBlockAtSocket(2).toCode().replaceAll("\"", "");
+        translator.addDefinitionCommand("int lastError;");
+        translator.addDefinitionCommand("long sumError;");
+        translator.addDefinitionCommand("void forward(){ \n" +
+                                        "  int velRight = STOP_"+ right +" - 10;\n" +
+                                        "  int velLeft = STOP_"+ left +" + 15;\n" +
+                                        "  int position = "+frontSensors+".readLine("+ frontSensors + "_values);  \n" +
+                                        "  long error = (position-500);\n" +
+                                        "  error = (error * 90);\n" +
+                                        "  error = error / 500;\n" +
+                                        "\n" +
+                                        "  sumError = sumError + error;\n" +
+                                        "  long difError = error - lastError;\n" +
+                                        "  float P = 0.1;\n" +
+                                        "  float I = 0.001;\n" +
+                                        "  float D = 0.05;\n" +
+                                        "  int v = (P*error) + (D * difError) + (I * sumError);\n" +
+                                        "  if(abs(error)<10){\n" +
+                                        "    v=0;\n" +
+                                        "  }\n" +
+                                        "  lastError = error;\n" +
+                                        "  \n" +
+                                        "  velLeft = velLeft + v; \n" +
+                                        "  velRight = velRight + v;\n" +
+                                        "  servo_"+left+".write(velLeft);\n" +
+                                        "  servo_"+right+".write(velRight);  \n" +
+                                        "}");
+        TranslatorBlock t = this.getRequiredTranslatorBlockAtSocket(3);
+        return   "do { \n" +
+            "          forward();\n" +
+            "    } while("+ t.toCode() +") ; \n" +
             "    do { \n" +
-            "          sigueLinea();\n" +
-            "    } while(!sobreCruce());\n";
+            "          forward();\n" +
+            "    } while(!"+ t.toCode() +");\n";
     }
     
         

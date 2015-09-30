@@ -8770,6 +8770,19 @@
 			<description>
 				<text>Avanza el robot Quemes hasta el siguiente cruce</text>
 			</description>
+                        <BlockConnectors>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="motor derecho">
+                                    <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="motor izquierdo">
+                                    <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="sensores delanteros">
+                                    <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="boolean" connector-kind="socket" label="parar cuando">
+                            </BlockConnector>
+                        </BlockConnectors>
 		</BlockGenus>
                 <BlockGenus name="calibrar" kind="command" color="10 80 50" initlabel="bg.calibrar">
 			<description>
@@ -8796,8 +8809,8 @@
 				<text>Definition of six Infrarred array </text>
 			</description>
                         <BlockConnectors>
-                                <BlockConnector connector-type="string" connector-kind="socket" label="name">
-                                    <DefaultArg genus-name="message" label="variable_name" />
+                                <BlockConnector connector-type="string" connector-kind="socket" label="nombre sensor">
+                                    <DefaultArg genus-name="message" label="nombre" />
                                 </BlockConnector>
                                 <BlockConnector connector-type="number" connector-kind="socket" label="Emmiter pin">
                                     <DefaultArg genus-name="number" label="1" />
@@ -8828,7 +8841,7 @@
 			</description>
                         <BlockConnectors>
                                 <BlockConnector connector-type="string" connector-kind="socket" label="name">
-                                    <DefaultArg genus-name="message" label="variable_name" />
+                                    <DefaultArg genus-name="message" label="nombre" />
                                 </BlockConnector>
                                 <BlockConnector connector-type="number" connector-kind="socket" label="Pin #1">
                                     <DefaultArg genus-name="number" label="1" />
@@ -8840,25 +8853,38 @@
 		</BlockGenus>
                 <BlockGenus name="IRSensorInLine" kind="data" color="10 80 50" initlabel="bg.IRSensorInLine">
                          <BlockConnectors>
-                                <BlockConnector connector-type="string" connector-kind="socket" label="sensor_name">
-                                    <DefaultArg genus-name="message" label="variable_name" />
+                                <BlockConnector connector-type="string" connector-kind="socket" label="nombre sensor">
+                                    <DefaultArg genus-name="message" label="nombre" />
                                 </BlockConnector>
                                 <BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
                 </BlockGenus>
                 <BlockGenus name="IRSensorCalibration" kind="command" color="10 80 50" initlabel="bg.IRSensorCalibration">
                          <BlockConnectors>
-                                <BlockConnector connector-type="string" connector-kind="socket" label="sensor_name">
-                                    <DefaultArg genus-name="message" label="variable_name" />
+                                <BlockConnector connector-type="string" connector-kind="socket" label="nombre sensor">
+                                    <DefaultArg genus-name="message" label="nombre" />
                                 </BlockConnector>
 			</BlockConnectors>
                 </BlockGenus>
                 <BlockGenus name="ReadArraySensor" kind="data" color="10 80 50" initlabel="bg.ReadArraySensor">
                          <BlockConnectors>
-                                <BlockConnector connector-type="string" connector-kind="socket" label="sensor_name">
-                                    <DefaultArg genus-name="message" label="variable_name" />
+                                <BlockConnector connector-type="string" connector-kind="socket" label="nombre sensor">
+                                    <DefaultArg genus-name="message" label="nombre" />
                                 </BlockConnector>
                                 <BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+                </BlockGenus>
+                <BlockGenus name="CalibrateMotor" kind="command" color="10 80 50" initlabel="bg.CalibrateMotor">
+                         <BlockConnectors>
+                                <BlockConnector connector-type="string" connector-kind="socket" label="motor">
+                                    <DefaultArg genus-name="message" label="motor" />
+                                </BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="#pin">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="punto de parada">
+					<DefaultArg genus-name="number" label="90" />
+				</BlockConnector>
 			</BlockConnectors>
                 </BlockGenus>
 	</BlockGenuses>
@@ -9258,6 +9284,7 @@
                                 <BlockGenusMember>IRSensorCalibration</BlockGenusMember>
                                 <BlockGenusMember>ReadArraySensor</BlockGenusMember>
                                 <BlockGenusMember>defineTwoIRSensorArray</BlockGenusMember>
+                                <BlockGenusMember>CalibrateMotor</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="29 152 155" name="bd.pins" type="factory">
 				<BlockGenusMember>pin-read-digital</BlockGenusMember>
@@ -9338,7 +9365,7 @@
 				<BlockGenusMember>setter_variable_char</BlockGenusMember>
 				<BlockGenusMember>variable_poly</BlockGenusMember>
 			</BlockDrawer>
-			<BlockDrawer button-color="205 133 63" name="bd.utilities" type="factory">
+<!--			<BlockDrawer button-color="205 133 63" name="bd.utilities" type="factory">
 				<BlockGenusMember>servo_default</BlockGenusMember>
 				<BlockGenusMember>ultrasonic</BlockGenusMember>
 				<BlockGenusMember>LCD_I2C_Sainsmart_20by4</BlockGenusMember>
@@ -9346,7 +9373,7 @@
 				<BlockGenusMember>LCD_PLL_Sainsmart_16by2</BlockGenusMember>
 				<BlockGenusMember>number-single-I2C-address</BlockGenusMember>
 				<BlockGenusMember>number-single-fixed-parallel</BlockGenusMember>
-			</BlockDrawer>
+			</BlockDrawer>-->
 			<BlockDrawer button-color="255 255 255" name="bd.communication" type="factory">
 				<BlockGenusMember>serial_read</BlockGenusMember>
 				<BlockGenusMember>serial_print</BlockGenusMember>
@@ -9358,14 +9385,14 @@
 				<BlockGenusMember>wire_write</BlockGenusMember>
 				<BlockGenusMember>wire_read</BlockGenusMember>
 				<BlockGenusMember>wire_isread</BlockGenusMember>
-				<BlockGenusMember>DuinoEDU_Guino_Read</BlockGenusMember>
+<!--				<BlockGenusMember>DuinoEDU_Guino_Read</BlockGenusMember>
 				<BlockGenusMember>DuinoEDU_Guino_Slider</BlockGenusMember>
 				<BlockGenusMember>DuinoEDU_Guino_switch</BlockGenusMember>
 				<BlockGenusMember>DuinoEDU_Guino_pause</BlockGenusMember>
 				<BlockGenusMember>DuinoEDU_Guino_Title</BlockGenusMember>
-				<BlockGenusMember>DuinoEDU_Guino_column</BlockGenusMember>
+				<BlockGenusMember>DuinoEDU_Guino_column</BlockGenusMember>-->
 			</BlockDrawer>
-			<BlockDrawer button-color="26 97 218" name="bd.scoop">
+<!--			<BlockDrawer button-color="26 97 218" name="bd.scoop">
 			    <BlockGenusMember>scoop_task</BlockGenusMember>
 				<BlockGenusMember>scoop_loop</BlockGenusMember>
 				<BlockGenusMember>scoop_sleep</BlockGenusMember>
@@ -9375,7 +9402,7 @@
 				<BlockGenusMember>scoop_event_falling</BlockGenusMember>
 				<BlockGenusMember>scoop_event_rising</BlockGenusMember>
 				<BlockGenusMember>scoop_event_change</BlockGenusMember>
-			</BlockDrawer><!--
+			</BlockDrawer>
 			<BlockDrawer button-color="0 50 45" name="bd.storage" type="factory">
 				<BlockGenusMember>eeprom_read_int</BlockGenusMember>
 				<BlockGenusMember>eeprom_write_int</BlockGenusMember>
@@ -9388,7 +9415,7 @@
 				 <BlockGenusMember>sd_write_number</BlockGenusMember> 
 				 <BlockGenusMember>sd_write_number_int</BlockGenusMember> 
 			</BlockDrawer>
--->			<BlockDrawer button-color="169 148 212" name="bd.network" type="factory">
+			<BlockDrawer button-color="169 148 212" name="bd.network" type="factory">
 				<BlockGenusMember>bleshield</BlockGenusMember>
 				<BlockGenusMember>bleshield_available</BlockGenusMember>
 				<BlockGenusMember>bleshield_read_poly</BlockGenusMember>
@@ -9398,8 +9425,8 @@
 				<BlockGenusMember>code_head</BlockGenusMember>
 				<BlockGenusMember>code_setup</BlockGenusMember>
 				<BlockGenusMember>code_loop</BlockGenusMember>
-			</BlockDrawer><!--
--->			<BlockDrawer button-color="13 152 164" name="bd.tinkerkit" type="factory">
+			</BlockDrawer>-->
+<!--			<BlockDrawer button-color="13 152 164" name="bd.tinkerkit" type="factory">
 				<BlockGenusMember>Tinker_LED</BlockGenusMember>
 				<BlockGenusMember>Tinker_LED_pwm</BlockGenusMember>
 				<BlockGenusMember>Tinker_Button</BlockGenusMember>
@@ -9414,8 +9441,8 @@
 				<BlockGenusMember>Tinker_Relay</BlockGenusMember>
 				<BlockGenusMember>Tinker_Mosfet</BlockGenusMember>
 				<BlockGenusMember>Tinker_Mosfet_pwm</BlockGenusMember>
-			</BlockDrawer>
-			<BlockDrawer button-color="255 102 0" name="bd.dfrobot" type="factory">
+			</BlockDrawer>-->
+<!--			<BlockDrawer button-color="255 102 0" name="bd.dfrobot" type="factory">
 			    <BlockGenusMember>df_led</BlockGenusMember>
 				<BlockGenusMember>df_led_pwm</BlockGenusMember>
 				<BlockGenusMember>df_digital_push_button</BlockGenusMember>
@@ -9619,9 +9646,9 @@
 			    <BlockGenusMember>insectbot_go_backright</BlockGenusMember>
 			    <BlockGenusMember>insectbot_turn_left</BlockGenusMember>
 			    <BlockGenusMember>insectbot_blink_led</BlockGenusMember>
-			</BlockDrawer>
+			</BlockDrawer>-->
 			<!-- iDrawing -->
-			<BlockDrawer button-color="255 102 0" name="bd.iDrawing">
+<!--			<BlockDrawer button-color="255 102 0" name="bd.iDrawing">
 			    <BlockGenusMember>iDrawing_set_para</BlockGenusMember>
 			    <BlockGenusMember>iDrawing_run</BlockGenusMember>
 			    <BlockGenusMember>iDrawing_rule_start</BlockGenusMember>
@@ -9648,9 +9675,9 @@
 			    <BlockGenusMember>trigger_equal</BlockGenusMember>
 			    <BlockGenusMember>trigger_greater</BlockGenusMember>
 			    <BlockGenusMember>trigger_less</BlockGenusMember>		    
-			</BlockDrawer>
+			</BlockDrawer>-->
 <!--			 littlebits -->
-			<BlockDrawer button-color="93 13 125" name="bd.littlebits">
+<!--			<BlockDrawer button-color="93 13 125" name="bd.littlebits">
 			    <BlockGenusMember>little_bits_bendsensor</BlockGenusMember>
 			    <BlockGenusMember>little_bits_button</BlockGenusMember>
 			    <BlockGenusMember>little_bits_dimmer</BlockGenusMember>
@@ -9683,10 +9710,9 @@
 			    <BlockGenusMember>little_bits_uvled</BlockGenusMember>
 			    <BlockGenusMember>little_bits_vibration_motor</BlockGenusMember>
 			    <BlockGenusMember>little_bits_synthspeaker</BlockGenusMember>
-			</BlockDrawer><!--
-			
-			 keenlon 			
--->			<BlockDrawer button-color="20 150 30" name="bd.ke-keenlon">
+			</BlockDrawer>-->
+                        <!-- keenlon -->	
+<!--                        <BlockDrawer button-color="20 150 30" name="bd.ke-keenlon">
 				<BlockGenusMember>ke-motor-run</BlockGenusMember>
 				<BlockGenusMember>ke-motor-setmoto</BlockGenusMember>	
 				<BlockGenusMember>ke-motor-stop</BlockGenusMember>				
@@ -9713,59 +9739,59 @@
 				<BlockGenusMember>ke-tempe</BlockGenusMember>	
 				<BlockGenusMember>ke-psd</BlockGenusMember>								
 				<BlockGenusMember>ke-servo</BlockGenusMember>																		
-			</BlockDrawer> 	<!--
+			</BlockDrawer> 	
 
-			<BlockDrawer button-color="152 29 155" name="bd.jerusalab" type="factory">
-				<BlockGenusMember>midi_command</BlockGenusMember>
-				 <BlockGenusMember>midi_note</BlockGenusMember> 
-			</BlockDrawer>-->
+            <BlockDrawer button-color="152 29 155" name="bd.jerusalab" type="factory">
+                    <BlockGenusMember>midi_command</BlockGenusMember>
+                     <BlockGenusMember>midi_note</BlockGenusMember> 
+            </BlockDrawer>-->
 			
-			<BlockDrawer button-color="135 206 235" name="bd.linksprite_LinkerKit">
-				<BlockGenusMember>ls_10mmLEDModule</BlockGenusMember>
-				<BlockGenusMember>ls_5mmLEDModule</BlockGenusMember>
-				<BlockGenusMember>ls_AccelerometerModule_x</BlockGenusMember>
-				<BlockGenusMember>ls_AccelerometerModule_y</BlockGenusMember>
-				<BlockGenusMember>ls_AccelerometerModule_z</BlockGenusMember>
-				<BlockGenusMember>ls_ButtonModule</BlockGenusMember>
-				<BlockGenusMember>ls_BuzzerModule</BlockGenusMember>
-				<BlockGenusMember>ls_HallSensor</BlockGenusMember>
-				<BlockGenusMember>ls_HighPowerLedModule</BlockGenusMember>
-				<BlockGenusMember>ls_JoystickSensorModule_x</BlockGenusMember>
-				<BlockGenusMember>ls_JoystickSensorModule_y</BlockGenusMember>
-				<BlockGenusMember>ls_LDRModule</BlockGenusMember>
-				<BlockGenusMember>ls_LEDBar</BlockGenusMember>
-				<BlockGenusMember>ls_Linear-SlidePotentiometerModule</BlockGenusMember>
-				<BlockGenusMember>ls_MagneticSwitch</BlockGenusMember>
-				<BlockGenusMember>ls_MosfetModule</BlockGenusMember>
-				<BlockGenusMember>ls_RelayModule</BlockGenusMember>
-				<BlockGenusMember>ls_RotaryPotentiometerModule</BlockGenusMember>
-				<BlockGenusMember>ls_RTCModule</BlockGenusMember>
-				<BlockGenusMember>ls_SoundSensor</BlockGenusMember>
-				<BlockGenusMember>ls_ThermalModule</BlockGenusMember>
-				<BlockGenusMember>ls_TiltModule</BlockGenusMember>
-				<BlockGenusMember>ls_TouchSensorModule</BlockGenusMember>
-			</BlockDrawer>
+            <!--			<BlockDrawer button-color="135 206 235" name="bd.linksprite_LinkerKit">
+                    <BlockGenusMember>ls_10mmLEDModule</BlockGenusMember>
+                    <BlockGenusMember>ls_5mmLEDModule</BlockGenusMember>
+                    <BlockGenusMember>ls_AccelerometerModule_x</BlockGenusMember>
+                    <BlockGenusMember>ls_AccelerometerModule_y</BlockGenusMember>
+                    <BlockGenusMember>ls_AccelerometerModule_z</BlockGenusMember>
+                    <BlockGenusMember>ls_ButtonModule</BlockGenusMember>
+                    <BlockGenusMember>ls_BuzzerModule</BlockGenusMember>
+                    <BlockGenusMember>ls_HallSensor</BlockGenusMember>
+                    <BlockGenusMember>ls_HighPowerLedModule</BlockGenusMember>
+                    <BlockGenusMember>ls_JoystickSensorModule_x</BlockGenusMember>
+                    <BlockGenusMember>ls_JoystickSensorModule_y</BlockGenusMember>
+                    <BlockGenusMember>ls_LDRModule</BlockGenusMember>
+                    <BlockGenusMember>ls_LEDBar</BlockGenusMember>
+                    <BlockGenusMember>ls_Linear-SlidePotentiometerModule</BlockGenusMember>
+                    <BlockGenusMember>ls_MagneticSwitch</BlockGenusMember>
+                    <BlockGenusMember>ls_MosfetModule</BlockGenusMember>
+                    <BlockGenusMember>ls_RelayModule</BlockGenusMember>
+                    <BlockGenusMember>ls_RotaryPotentiometerModule</BlockGenusMember>
+                    <BlockGenusMember>ls_RTCModule</BlockGenusMember>
+                    <BlockGenusMember>ls_SoundSensor</BlockGenusMember>
+                    <BlockGenusMember>ls_ThermalModule</BlockGenusMember>
+                    <BlockGenusMember>ls_TiltModule</BlockGenusMember>
+                    <BlockGenusMember>ls_TouchSensorModule</BlockGenusMember>
+            </BlockDrawer>-->
 			
-			<!--
-			<BlockDrawer button-color="0 255 0" name="XinChejian" type="factory">
-				<BlockGenusMember>xcj_motor_forward</BlockGenusMember>
-				<BlockGenusMember>xcj_motor_backward</BlockGenusMember> 
-				<BlockGenusMember>xcj_ms_digital_read</BlockGenusMember>
-				<BlockGenusMember>xcj_ms_digital_write</BlockGenusMember>
-			</BlockDrawer>
-			-->
-			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
-			<!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
-		</BlockDrawerSet>
-	</BlockDrawerSets>
+            <!--
+            <BlockDrawer button-color="0 255 0" name="XinChejian" type="factory">
+                    <BlockGenusMember>xcj_motor_forward</BlockGenusMember>
+                    <BlockGenusMember>xcj_motor_backward</BlockGenusMember> 
+                    <BlockGenusMember>xcj_ms_digital_read</BlockGenusMember>
+                    <BlockGenusMember>xcj_ms_digital_write</BlockGenusMember>
+            </BlockDrawer>
+            -->
+            <!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
+            <!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
+        </BlockDrawerSet>
+    </BlockDrawerSets>
 
-	<Pages drawer-with-page="yes">
-		<Page page-name="Main" page-width="400" page-color="128 128 128"/>
-	</Pages>
+    <Pages drawer-with-page="yes">
+        <Page page-name="Main" page-width="400" page-color="128 128 128"/>
+    </Pages>
 
-	<TrashCan>
-		<OpenTrashImage>com/ardublock/block/trash_open.png</OpenTrashImage>
-		<ClosedTrashImage>com/ardublock/block/trash.png</ClosedTrashImage>
-	</TrashCan>
+    <TrashCan>
+        <OpenTrashImage>com/ardublock/block/trash_open.png</OpenTrashImage>
+        <ClosedTrashImage>com/ardublock/block/trash.png</ClosedTrashImage>
+    </TrashCan>
 
 </BlockLangDef>
