@@ -18,11 +18,12 @@ public class PararBlock extends TranslatorBlock{
 
     @Override
     public String toCode() throws SocketNullException, SubroutineNotDeclaredException, BlockException {
-        return "while(true){\n" +
-                "     Serial.println(\"parar\");\n" +
-                "      velIzq=0;\n" +
-                "      velDer=0; \n" +
-                "  }\n";
+        String left = this.getRequiredTranslatorBlockAtSocket(0).toCode().replaceAll("\"", "");
+        String pinleft = this.getRequiredTranslatorBlockAtSocket(1).toCode().replaceAll("\"", "");
+        String right = this.getRequiredTranslatorBlockAtSocket(2).toCode().replaceAll("\"", "");
+        String pinright = this.getRequiredTranslatorBlockAtSocket(3).toCode().replaceAll("\"", "");
+        return "  servo_pin_"+pinleft+".write(STOP_"+ left +");\n" +
+               "  servo_pin_"+pinright+".write(STOP_"+ right +");  \n";
     }
     
 }

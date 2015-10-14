@@ -32,9 +32,9 @@ public class SensorInLineBlock extends TranslatorBlock {
                 "  {\n" +
                 "    sum = sum +  "+name+"_values[i];\n" +
                 "  }");
-        function.append("long max = " + name +"_NUM_SENSORS * 2500;");
-        function.append("long threshold = " + name +"_NUM_SENSORS * 2500 * 0.8;");
-        function.append("if(sum > ((" + name +"_NUM_SENSORS * 2500) - threshold)){\n" +
+        function.append("long maxvalue = " + name +"_NUM_SENSORS * 2500;");
+        function.append("long threshold = " + name +"_NUM_SENSORS * 2500 * 0.7;");
+        function.append("if(sum > (maxvalue - threshold)){\n" +
                     "    return true;\n" +
                     "  }else{\n" +
                     "    return false;\n" +

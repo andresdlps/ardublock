@@ -24,7 +24,7 @@ public class AvanzarBlock extends TranslatorBlock{
         String right = this.getRequiredTranslatorBlockAtSocket(2).toCode().replaceAll("\"", "");
         String pinright = this.getRequiredTranslatorBlockAtSocket(3).toCode().replaceAll("\"", "");
         String frontSensors = this.getRequiredTranslatorBlockAtSocket(4).toCode().replaceAll("\"", "");
-        translator.addDefinitionCommand("int lastError;");
+        translator.addDefinitionCommand("long lastError;");
         translator.addDefinitionCommand("long sumError;");
         translator.addDefinitionCommand("void forward(){ \n" +
                                         "  int velRight = STOP_"+ right +" - 10;\n" +
@@ -51,12 +51,16 @@ public class AvanzarBlock extends TranslatorBlock{
                                         "  servo_pin_"+pinright+".write(velRight);  \n" +
                                         "}");
         TranslatorBlock t = this.getRequiredTranslatorBlockAtSocket(5);
-        return   "do { \n" +
+        return   "    lastError = 0;\n" +
+                "    sumError = 0;\n"
+                + "do { \n" +
             "          forward();\n" +
             "    } while("+ t.toCode() +") ; \n" +
             "    do { \n" +
             "          forward();\n" +
-            "    } while(!"+ t.toCode() +");\n";
+            "    } while(!"+ t.toCode() +");\n" +
+                "  servo_pin_"+pinleft+".write(STOP_"+ left +");\n" +
+                "  servo_pin_"+pinright+".write(STOP_"+ right +");  \n";
     }
     
         

@@ -8799,6 +8799,20 @@
 			<description>
 				<text>Para la ejecucion del robot Quemes</text>
 			</description>
+                        <BlockConnectors>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="motor derecho">
+                                <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="number" connector-kind="socket" label="#pin derecho">
+                                <DefaultArg genus-name="number" label="1" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="motor izquierdo">
+                                <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="number" connector-kind="socket" label="#pin izquierdo">
+                                <DefaultArg genus-name="number" label="1" />
+                            </BlockConnector>
+                        </BlockConnectors>
 		</BlockGenus>
                 <BlockGenus name="girarderecha" kind="command" color="10 80 50" initlabel="bg.girarderecha">
 			<description>
@@ -9281,7 +9295,6 @@
 			</BlockDrawer>
                         <BlockDrawer name="bd.quemes" type="factory" button-color="10 80 50">
                                 <BlockGenusMember>avanzar</BlockGenusMember>
-                                <BlockGenusMember>calibrar</BlockGenusMember>
                                 <BlockGenusMember>parar</BlockGenusMember>
                                 <BlockGenusMember>girarderecha</BlockGenusMember>
                                 <BlockGenusMember>girarizquierda</BlockGenusMember>
