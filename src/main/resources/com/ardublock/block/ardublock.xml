@@ -8774,8 +8774,14 @@
                             <BlockConnector connector-type="string" connector-kind="socket" label="motor derecho">
                                     <DefaultArg genus-name="message" label="nombre" />
                             </BlockConnector>
+                            <BlockConnector connector-type="number" connector-kind="socket" label="#pin derecho">
+					<DefaultArg genus-name="number" label="1" />
+                            </BlockConnector>
                             <BlockConnector connector-type="string" connector-kind="socket" label="motor izquierdo">
                                     <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="number" connector-kind="socket" label="#pin izquierdo">
+					<DefaultArg genus-name="number" label="1" />
                             </BlockConnector>
                             <BlockConnector connector-type="string" connector-kind="socket" label="sensores delanteros">
                                     <DefaultArg genus-name="message" label="nombre" />

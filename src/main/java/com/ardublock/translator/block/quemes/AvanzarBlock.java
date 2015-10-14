@@ -20,8 +20,10 @@ public class AvanzarBlock extends TranslatorBlock{
     @Override
     public String toCode() throws SocketNullException, SubroutineNotDeclaredException, BlockException {
         String left = this.getRequiredTranslatorBlockAtSocket(0).toCode().replaceAll("\"", "");
-        String right = this.getRequiredTranslatorBlockAtSocket(1).toCode().replaceAll("\"", "");
-        String frontSensors = this.getRequiredTranslatorBlockAtSocket(2).toCode().replaceAll("\"", "");
+        String pinleft = this.getRequiredTranslatorBlockAtSocket(1).toCode().replaceAll("\"", "");
+        String right = this.getRequiredTranslatorBlockAtSocket(2).toCode().replaceAll("\"", "");
+        String pinright = this.getRequiredTranslatorBlockAtSocket(3).toCode().replaceAll("\"", "");
+        String frontSensors = this.getRequiredTranslatorBlockAtSocket(4).toCode().replaceAll("\"", "");
         translator.addDefinitionCommand("int lastError;");
         translator.addDefinitionCommand("long sumError;");
         translator.addDefinitionCommand("void forward(){ \n" +
@@ -45,10 +47,10 @@ public class AvanzarBlock extends TranslatorBlock{
                                         "  \n" +
                                         "  velLeft = velLeft + v; \n" +
                                         "  velRight = velRight + v;\n" +
-                                        "  servo_"+left+".write(velLeft);\n" +
-                                        "  servo_"+right+".write(velRight);  \n" +
+                                        "  servo_pin_"+pinleft+".write(velLeft);\n" +
+                                        "  servo_pin_"+pinright+".write(velRight);  \n" +
                                         "}");
-        TranslatorBlock t = this.getRequiredTranslatorBlockAtSocket(3);
+        TranslatorBlock t = this.getRequiredTranslatorBlockAtSocket(5);
         return   "do { \n" +
             "          forward();\n" +
             "    } while("+ t.toCode() +") ; \n" +

@@ -33,7 +33,7 @@ public class CalibrateMotor extends TranslatorBlock {
             throw new BlockException(this.blockId, "the Pin# of Servo must a number");
         }
         String pinNumber = translatorBlock.toCode();
-        String servoName = "servo_" + name;
+        String servoName = "servo_pin_" + pinNumber;
 
         String ret = servoName + ".write( " + angle + " );\n";
         translator.addHeaderFile("Servo.h");
