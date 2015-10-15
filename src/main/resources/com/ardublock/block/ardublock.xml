@@ -8907,6 +8907,31 @@
 				</BlockConnector>
 			</BlockConnectors>
                 </BlockGenus>
+                <BlockGenus name="girar" kind="command" color="10 80 50" initlabel="bg.girar">
+			<description>
+				<text>Avanza el robot Quemes hasta el siguiente cruce</text>
+			</description>
+                        <BlockConnectors>
+                            <BlockConnector connector-type="boolean" connector-kind="socket" label="Hacia la izquierda">
+                                    <DefaultArg genus-name="true" label="true" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="motor derecho">
+                                    <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="number" connector-kind="socket" label="#pin derecho">
+					<DefaultArg genus-name="number" label="1" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="string" connector-kind="socket" label="motor izquierdo">
+                                    <DefaultArg genus-name="message" label="nombre" />
+                            </BlockConnector>
+                            <BlockConnector connector-type="number" connector-kind="socket" label="#pin izquierdo">
+					<DefaultArg genus-name="number" label="1" />
+                            </BlockConnector>
+                            
+                            <BlockConnector connector-type="boolean" connector-kind="socket" label="parar cuando">
+                            </BlockConnector>
+                        </BlockConnectors>
+		</BlockGenus>
 	</BlockGenuses>
 
 	<BlockFamilies>
@@ -9304,6 +9329,7 @@
                                 <BlockGenusMember>ReadArraySensor</BlockGenusMember>
                                 <BlockGenusMember>defineTwoIRSensorArray</BlockGenusMember>
                                 <BlockGenusMember>CalibrateMotor</BlockGenusMember>
+                                <BlockGenusMember>girar</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="29 152 155" name="bd.pins" type="factory">
 				<BlockGenusMember>pin-read-digital</BlockGenusMember>
