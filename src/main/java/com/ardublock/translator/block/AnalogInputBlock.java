@@ -14,8 +14,9 @@ public class AnalogInputBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
+                TranslatorBlock translatorBlock = this.getRequiredTranslatorBlockAtSocket(0);
+                translator.addSetupCommand("pinMode("+translatorBlock.toCode()+", INPUT);");
 		String ret = "analogRead(";
-		TranslatorBlock translatorBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		ret = ret + translatorBlock.toCode();
 		ret = ret + ")";
 		return codePrefix + ret + codeSuffix;

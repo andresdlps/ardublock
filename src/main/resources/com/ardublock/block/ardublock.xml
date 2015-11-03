@@ -2145,6 +2145,17 @@
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
+                
+                <BlockGenus name="serial_write" kind="command" color="245 245 245" initlabel="bg.serial_write">
+			<description>
+				<text>send data via Serial port</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="socket">
+					<DefaultArg genus-name="message" label="message" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
 		
 		<BlockGenus name="ir_setport" kind="command" color="245 245 245" initlabel="bg.ir_setport">
 			<description>
@@ -9422,6 +9433,7 @@
 			<BlockDrawer button-color="255 255 255" name="bd.communication" type="factory">
 				<BlockGenusMember>serial_read</BlockGenusMember>
 				<BlockGenusMember>serial_print</BlockGenusMember>
+                                <BlockGenusMember>serial_write</BlockGenusMember>
 				<BlockGenusMember>glue_sn</BlockGenusMember>
 				<BlockGenusMember>glue_sb</BlockGenusMember>
 				<BlockGenusMember>glue_poly</BlockGenusMember>
@@ -9487,7 +9499,7 @@
 				<BlockGenusMember>Tinker_Mosfet</BlockGenusMember>
 				<BlockGenusMember>Tinker_Mosfet_pwm</BlockGenusMember>
 			</BlockDrawer>-->
-<!--			<BlockDrawer button-color="255 102 0" name="bd.dfrobot" type="factory">
+			<BlockDrawer button-color="255 102 0" name="bd.dfrobot" type="factory">
 			    <BlockGenusMember>df_led</BlockGenusMember>
 				<BlockGenusMember>df_led_pwm</BlockGenusMember>
 				<BlockGenusMember>df_digital_push_button</BlockGenusMember>
@@ -9539,7 +9551,7 @@
 				<BlockGenusMember>df_romeo_motors</BlockGenusMember>
 				<BlockGenusMember>df_romeo_motor</BlockGenusMember>
 				<BlockGenusMember>df_romeo_motor_stop</BlockGenusMember>
-			</BlockDrawer>
+			</BlockDrawer><!--
 			<BlockDrawer button-color="0 255 0" name="bd.seeedstudio">
 				<BlockGenusMember>seeed_button</BlockGenusMember>
 				<BlockGenusMember>seeed_led</BlockGenusMember>
