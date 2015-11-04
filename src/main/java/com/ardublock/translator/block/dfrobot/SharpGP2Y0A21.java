@@ -24,7 +24,7 @@ public class SharpGP2Y0A21 extends TranslatorBlock {
 		ret = ret + translatorBlock.toCode();
 		ret = ret + "))";
 		
-		return ret;
+		return codePrefix + ret + codeSuffix;
 	}
 
 }
