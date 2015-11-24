@@ -1626,9 +1626,9 @@
 					<FileLocation>com/ardublock/block/dfrobot/dfr0017.png</FileLocation>
 				</Image>
 			</Images>
-		</BlockGenus>
-
-		<BlockGenus name="df_lcd_keypad" kind="command" color="255 102 0" initlabel="bg.df_lcd_keypad">
+		</BlockGenus>		
+                
+                <BlockGenus name="df_lcd_keypad" kind="command" color="255 102 0" initlabel="bg.df_lcd_keypad">
 			<description>
 				<text>LCD</text>
 			</description>
@@ -1644,8 +1644,40 @@
 			</Images>
 		</BlockGenus>
                 
+                <BlockGenus name="df_lcd_keypad_cursor" kind="command" color="255 102 0" initlabel="bg.df_lcd_keypad_cursor">
+			<description>
+				<text>LCD cursor</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.posx">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+                                <BlockConnector connector-type="number" connector-kind="socket" label="bc.posy">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+			</BlockConnectors>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/bulk/lcd2x16-01.jpg</FileLocation>
+				</Image>
+			</Images>
+		</BlockGenus>
                 
-<!--******************************BLOQUES QUEMES**************************************-->
+                <BlockGenus name="df_lcd_keypad_clear" kind="command" color="255 102 0" initlabel="bg.df_lcd_keypad_clear">
+			<description>
+				<text>LCD clear</text>
+			</description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/bulk/lcd2x16-01.jpg</FileLocation>
+				</Image>
+			</Images>
+		</BlockGenus>
+                
+        <!--***************************************************************************************************************-->        
+        <!--***************************************** QUEMES **************************************************************-->
+        <!--***************************************************************************************************************-->
+
                 <BlockGenus name="avanzar" kind="command" color="10 80 50" initlabel="bg.avanzar">
 			<description>
 				<text>Avanza el robot Quemes hasta el siguiente cruce</text>
@@ -1811,6 +1843,26 @@
                             <BlockConnector connector-type="boolean" connector-kind="socket" label="parar cuando">
                             </BlockConnector>
                         </BlockConnectors>
+		</BlockGenus>
+
+        <!--***************************************************************************************************************-->        
+        <!--************************************* PARALLAX SENSORS ********************************************************-->
+        <!--***************************************************************************************************************-->
+                <BlockGenus name="Parallax_Ultrasonic" kind="data" color="0 255 0" initlabel="bg.Parallax_Ultrasonic">
+			<description>
+				<text>temp sensor</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+                                <BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="1" />
+                                </BlockConnector>
+			</BlockConnectors>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/seeedstudio/Ultrasonic_Ranger.png</FileLocation>
+				</Image>
+			</Images>
 		</BlockGenus>
 	</BlockGenuses>
 
@@ -2013,6 +2065,11 @@
 				<BlockGenusMember>df_analog_co_sensor</BlockGenusMember>
 				<BlockGenusMember>df_analog_voltage_divider</BlockGenusMember>
 				<BlockGenusMember>df_lcd_keypad</BlockGenusMember>
+                                <BlockGenusMember>df_lcd_keypad_cursor</BlockGenusMember>
+                                <BlockGenusMember>df_lcd_keypad_clear</BlockGenusMember>
+			</BlockDrawer>
+                        <BlockDrawer button-color="0 250 0" name="bd.parallax" type="factory">
+                                <BlockGenusMember>Parallax_Ultrasonic</BlockGenusMember>
 			</BlockDrawer>
             <!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
             <!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
