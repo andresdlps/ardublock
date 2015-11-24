@@ -15,12 +15,12 @@ public class lcdkeypad extends TranslatorBlock {
 	//@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
-		// récupération des paramètres du module, ici le message placé en rang 0
-		// on écrit donc le code Ã  générer
+		// rï¿½cupï¿½ration des paramï¿½tres du module, ici le message placï¿½ en rang 0
+		// on ï¿½crit donc le code ï¿½  gï¿½nï¿½rer
 		TranslatorBlock translatorBlock = this.getRequiredTranslatorBlockAtSocket(0, "lcd.print( ", " );\n");
-		// création du texte de code correspondant
+		// crï¿½ation du texte de code correspondant
 		translator.addHeaderFile("LiquidCrystal.h");
-		translator.addDefinitionCommand("LiquidCrystal lcd(12, 11, 5, 4, 3, 2);");
+		translator.addDefinitionCommand("LiquidCrystal lcd(8, 9, 4, 5, 6, 7);");
 		translator.addSetupCommand("lcd.begin(16, 2);");
 		String ret = translatorBlock.toCode();
 		return ret;
