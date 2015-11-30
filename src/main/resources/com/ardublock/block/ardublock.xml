@@ -292,7 +292,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="DuinoEDU_D8" label="D8" />
+					<DefaultArg genus-name="number" label="8" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -310,7 +310,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="DuinoEDU_D8" label="D8" />
+					<DefaultArg genus-name="number" label="8" />
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -1950,6 +1950,8 @@
 				<BlockGenusMember>pin-read-analog</BlockGenusMember>
 				<BlockGenusMember>pin-write-digital</BlockGenusMember>
 				<BlockGenusMember>pin-write-analog</BlockGenusMember>
+                                <BlockGenusMember>tone_time</BlockGenusMember>
+                                <BlockGenusMember>no_tone</BlockGenusMember>
 				<BlockGenusMember>df_servo</BlockGenusMember>
 				<BlockGenusMember>df_360_degree_rotation_motor</BlockGenusMember>
 			</BlockDrawer>
